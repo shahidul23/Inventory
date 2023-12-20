@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-floating">
-                                        <input class="form-control" id="inputPhone" v-model="form.phone" type="number" placeholder="Phone" />
+                                        <input class="form-control" id="inputPhone" v-model="form.phone" type="text" placeholder="Phone" />
                                         <small class="text-danger" v-if="errors.phone">{{ errors.phone[0] }}</small>
                                         <label for="inputPhone">Phone</label>
                                     </div>
@@ -59,9 +59,9 @@
                                     <div class="form-floating mb-3 mb-md-0">
                                         <select class="form-control" v-model="form.gender">
                                             <option disabled selected>Select Gender</option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                            <option value="Other">Other</option>
+                                            <option v-for="option in options" :key="option.value" :value="option.value">
+                                                {{ option.label }}
+                                            </option>
                                         </select>
                                         <small class="text-danger" v-if="errors.gender">{{ email.gender[0] }}</small>
                                         <label for="inputAddress">Gender</label>
@@ -116,24 +116,60 @@
     },
       data(){
           return{
+            options: [
+                    { value: 'Male', label: 'Male' },
+                    { value: 'Female', label: 'Female' },
+                    { value: 'Other', label: 'Other' }
+                ],
               form:{
-                  name:null,
-                  email:null,
-                  address:null,
-                  nid_number:null,
-                  gender:null,
-                  salary:null,
-                  Joining_date:null,
-                  photo:null,
-                  phone:null
+                  name:'',
+                  email:'',
+                  address:'',
+                  nid_number:'',
+                  gender:'',
+                  salary:'',
+                  Joining_date:'',
+                  photo:'',
+                  phone:'',
               },
               errors:{}
           }
       },
       methods:{
-        employeeInsert(){
+        onFileSelected(event){
+            let file = event.target.files[0];
+            if(file.size > 1048770){
+                Toast.fire({
+                    icon: "error",
+                    title: "Upload Image less then 1mb !"
+                    })
+            }else{
+                let reader = new FileReader();
+                reader.onload = event => {
+                    this.form.photo = event.target.result
+                    console.log(event.target.result)
+                };
+                reader.readAsDataURL(file);
+            }
+        },
+        employeeInsert() {
+            // Send a POST request to the '/api/employee' endpoint with the form data
+            axios.post('/api/employee', this.form)
+                .then(() => {
+                    // If the request is successful, show a success Toast notification
+                    Toast.fire({
+                        icon: "success",
+                        title: "Employee inserted successfully"
+                    });
 
-        }
+                    // Redirect the user to the 'all-employee' route
+                    this.$router.push({ name: 'all-employee' });
+                })
+                .catch(error => {
+                    // If there's an error, set the 'errors' data property with the validation errors
+                    this.errors = error.response.data.errors;
+                });
+            }
       }
   }
   </script>

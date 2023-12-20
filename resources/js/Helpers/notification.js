@@ -1,4 +1,4 @@
-class Notyfication{
+class Notification{
     success(){
         new Noty({
             type:'success',
@@ -47,6 +47,14 @@ class Notyfication{
             timeout:1000
         }).show();
     }
+    image_validetion(){
+        new Noty({
+            type:"error",
+            layout:'topRight',
+            text:'Upload Image less then 1mb',
+            timeout:1000
+        }).show();
+    }
 }
 
-export default Notyfication = new Notyfication()
+export default Notification = new Notification()

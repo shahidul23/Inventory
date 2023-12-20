@@ -7,8 +7,8 @@ import User from './Helpers/User';
 window.User = User;
 import Swal from 'sweetalert2';
 window.Swal = Swal;
-import Noty from './Helpers/notyfication';
-window.Noty = Noty
+import Notification from './Helpers/notification';
+window.Notification = Notification
 
 const Toast = Swal.mixin({
   toast: true,
@@ -22,9 +22,6 @@ const Toast = Swal.mixin({
   }
 });
 window.Toast = Toast;
-
-
-
 
 
 const router = createRouter({
