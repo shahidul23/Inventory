@@ -5,7 +5,7 @@
                 <h1 class="mt-4">Employee</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><router-link to="/">Dashboard</router-link></li>
-                    <li class="breadcrumb-item">Create Employee</li>
+                    <li class="breadcrumb-item">Edit Employee</li>
                 </ol>
                 <div class="card mb-4">
                     <div class="card-header">
@@ -14,7 +14,7 @@
                         <router-link class="btn btn-sm btn-info" style="float: right;" id="add_new" to="/all-employee">All Employee</router-link>
                     </div>
                     <div class="card-body">
-                        <form @submit.prevent="employeeInsert" enctype="multipart/form-data"> 
+                        <form @submit.prevent="employeeUpdate" enctype="multipart/form-data"> 
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <div class="form-floating mb-3 mb-md-0">
@@ -85,13 +85,16 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="row">
-                                        <div class="col-md-9">
+                                        <div class="col-md-8">
                                             <div class="form-group">
                                                 <input type="file" class="btn btn-info" @change="onFileSelected">
                                                 <small class="text-danger" v-if="errors.photo">{{ errors.photo[0] }}</small>
                                             </div>
                                         </div>
-                                        <div class="col-md-3">
+                                        <div class="col-md-2">
+                                            <img :src="form.newphoto" style=" height: 50px; width: 50px;">
+                                        </div>
+                                        <div class="col-md-2">
                                             <img :src="form.photo" style=" height: 50px; width: 50px;">
                                         </div>
                                     </div>
@@ -110,9 +113,14 @@
   <script>
   export default {
       created(){
-      if(!User.loggedIn())
-      this.$router.push({name: '/login'})
-  
+      if(!User.loggedIn()){
+        this.$router.push({name: '/login'})
+      }else{
+        let id = this.$route.params.id;
+        axios.get('/api/employee/'+id)
+        .then(({data}) =>{(this.form = data)})
+        .catch(console.log('error'))
+      }
     },
       data(){
           return{
@@ -130,6 +138,7 @@
                   salary:'',
                   Joining_date:'',
                   photo:'',
+                  newphoto:'',
                   phone:'',
               },
               errors:{}
@@ -146,18 +155,18 @@
             }else{
                 let reader = new FileReader();
                 reader.onload = event => {
-                    this.form.photo = event.target.result
-                    //console.log(event.target.result)
+                    this.form.newphoto = event.target.result
                 };
                 reader.readAsDataURL(file);
             }
         },
-        employeeInsert() {
-            axios.post('/api/employee', this.form)
+        employeeUpdate() {
+            let id = this.$route.params.id;
+            axios.patch('/api/employee/'+id, this.form)
             .then(() => {
                 Toast.fire({
                     icon: "success",
-                    title: "Employee inserted successfully"
+                    title: "Employee Edit successfully"
                 });
                 this.$router.push({ name: 'all-employee' });
             })

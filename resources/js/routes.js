@@ -8,6 +8,7 @@ import Home from './components/home.vue';
 //employee .....
 import Employee from './components/employee/create.vue';
 import AllEmployee from './components/employee/index.vue';
+import EditEmployee from './components/employee/edit.vue'
 
 export const routes = [
   { path: '/', component: Home, name: '/' },
@@ -18,5 +19,6 @@ export const routes = [
   //employee
   { path: '/add-employee', component: Employee, name:'add-employee' },
   { path: '/all-employee', component: AllEmployee, name:'all-employee' },
+  { path: '/edit-employee/:id', component: EditEmployee, name:'edit-employee' },
   
 ];

@@ -8,9 +8,9 @@
         <meta name="author" content="" />
         <title>Dashboard - SB Admin</title>
         @vite('resources/css/app.css')
-        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{ asset('backend/css/styles.css')}}" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <link href="//cdn.datatables.net/1.13.7/css/jquery.dataTables.min.css" rel="stylesheet">
     </head>
     <body class="sb-nav-fixed">
         <div id="app">
@@ -57,10 +57,10 @@
                             </a>
                             <div class="collapse" id="collapseEmploy" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <router-link class="nav-link" to="add-employee">
+                                    <router-link class="nav-link" :to="{name:'add-employee'}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-user-plus"></i></div>
                                         Add Employee</router-link>
-                                    <router-link class="nav-link" to="all-employee">
+                                    <router-link class="nav-link" :to="{name:'all-employee'}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                         All Employee</router-link>
                                 </nav>
@@ -133,11 +133,11 @@
         <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="{{ asset('backend/js/scripts.js')}}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
         <script src="{{ asset('backend/assets/demo/chart-area-demo.js')}}"></script>
-        <script src="{{ asset('backend/assets/demo/chart-bar-demo.js')}}"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('backend/assets/demo/chart-bar-demo.js')}}"></script> -->
         <script src="{{ asset('backend/js/datatables-simple-demo.js')}}"></script>
+        <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
         <script type="text/javascript">
             let token = localStorage.getItem('token');
             if(token){

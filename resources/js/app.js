@@ -9,7 +9,6 @@ import Swal from 'sweetalert2';
 window.Swal = Swal;
 import Notification from './Helpers/notification';
 window.Notification = Notification
-
 const Toast = Swal.mixin({
   toast: true,
   position: "top-end",
