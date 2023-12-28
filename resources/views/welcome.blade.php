@@ -72,10 +72,10 @@
                             </a>
                             <div class="collapse" id="collapseSupplier" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <router-link class="nav-link" to="#">
+                                    <router-link class="nav-link" :to="{name: 'add-supplier'}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-user-plus"></i></div>
                                         Add Supplier</router-link>
-                                    <router-link class="nav-link" to="#">
+                                    <router-link class="nav-link" :to="{name:'all-supplier'}">
                                     <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
                                         All Supplier</router-link>
                                 </nav>

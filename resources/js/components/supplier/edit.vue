@@ -2,19 +2,19 @@
     <div>
         <main>
             <div class="container-fluid px-4">
-                <h1 class="mt-4">Employee</h1>
+                <h1 class="mt-4">Supplier</h1>
                 <ol class="breadcrumb mb-4">
                     <li class="breadcrumb-item"><router-link to="/">Dashboard</router-link></li>
-                    <li class="breadcrumb-item">Edit Employee</li>
+                    <li class="breadcrumb-item">Edit Supplier</li>
                 </ol>
                 <div class="card mb-4">
                     <div class="card-header">
                         <i class="fas fa-user-friends me-1"></i>
-                        Employees list
-                        <router-link class="btn btn-sm btn-info" style="float: right;" id="add_new" to="/all-employee">All Employee</router-link>
+                        Supplier list
+                        <router-link class="btn btn-sm btn-info" style="float: right;" id="add_new" :to="{name:'all-supplier'}">All Employee</router-link>
                     </div>
                     <div class="card-body">
-                        <form @submit.prevent="employeeUpdate" enctype="multipart/form-data"> 
+                        <form @submit.prevent="supplierupdate" enctype="multipart/form-data"> 
                             <div class="row mb-3">
                                 <div class="col-md-4">
                                     <div class="form-floating mb-3 mb-md-0">
@@ -48,15 +48,6 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="inputNidNumber" v-model="form.nid_number" type="text" placeholder="NID Number"/>
-                                        <small class="text-danger" v-if="errors.nid_number">{{ errors.nid_number[0] }}</small>
-                                        <label for="inputNidNumber">NID Number</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3 mb-md-0">
                                         <select class="form-control" v-model="form.gender">
                                             <option disabled selected>Select Gender</option>
                                             <option v-for="option in options" :key="option.value" :value="option.value">
@@ -64,23 +55,16 @@
                                             </option>
                                         </select>
                                         <small class="text-danger" v-if="errors.gender">{{ errors.gender[0] }}</small>
-                                        <label for="inputAddress">Gender</label>
+                                        <label for="inputGender">Gender</label>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="inputSalary" v-model="form.salary" type="text" placeholder="Salary" />
-                                        <small class="text-danger" v-if="errors.salary">{{ errors.salary[0] }}</small>
-                                        <label for="inputSalary">Salary</label>
-                                    </div>
-                                </div>
+                                </div> 
                             </div>
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <input class="form-control" id="inputJoiningDate" v-model="form.Joining_date" type="Date" placeholder="Create a address" />
-                                        <small class="text-danger" v-if="errors.Joining_date">{{ errors.Joining_date[0] }}</small>
-                                        <label for="inputJoiningDate">Joining Date</label>
+                                        <input class="form-control" id="inputShopname" v-model="form.shopname" type="text" placeholder="Create a address"/>
+                                        <small class="text-danger" v-if="errors.shopname">{{ errors.shopname[0] }}</small>
+                                        <label for="inputShopname">Shop Name</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -117,7 +101,7 @@
         this.$router.push({name: '/login'})
       }else{
         let id = this.$route.params.id;
-        axios.get('/api/employee/'+id)
+        axios.get('/api/supplier/'+id)
         .then(({data}) =>{(this.form = data)})
         .catch(console.log('error'))
       }
@@ -133,10 +117,8 @@
                   name:'',
                   email:'',
                   address:'',
-                  nid_number:'',
                   gender:'',
-                  salary:'',
-                  Joining_date:'',
+                  shopname:'',
                   photo:'',
                   newphoto:'',
                   phone:'',
@@ -156,19 +138,20 @@
                 let reader = new FileReader();
                 reader.onload = event => {
                     this.form.newphoto = event.target.result
+                    //console.log(event.target.result)
                 };
                 reader.readAsDataURL(file);
             }
         },
-        employeeUpdate() {
+        supplierupdate() {
             let id = this.$route.params.id;
-            axios.patch('/api/employee/'+id, this.form)
+            axios.patch('/api/supplier/'+id, this.form)
             .then(() => {
                 Toast.fire({
                     icon: "success",
-                    title: "Employee Edit successfully"
+                    title: "Supplier Edit successfully"
                 });
-                this.$router.push({ name: 'all-employee' });
+                this.$router.push({ name: 'all-supplier' });
             })
             .catch(error => {
                 this.errors = error.response.data.errors;

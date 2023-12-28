@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Api\EmployeeController;
+use App\Http\Controllers\Api\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,4 +31,5 @@ Route::group([
 	Route::post('register', [AuthController::class, 'register']);
 });
 Route::apiResource('/employee', EmployeeController::class);
+Route::apiResource('/supplier', SupplierController::class);
 

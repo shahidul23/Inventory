@@ -42,14 +42,14 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
                                         <input class="form-control" id="inputAddress" v-model="form.address" type="text" placeholder="Create a address"/>
-                                        <small class="text-danger" v-if="errors.address">{{ email.address[0] }}</small>
+                                        <small class="text-danger" v-if="errors.address">{{ errors.address[0] }}</small>
                                         <label for="inputAddress">Address</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
                                         <input class="form-control" id="inputNidNumber" v-model="form.nid_number" type="text" placeholder="NID Number"/>
-                                        <small class="text-danger" v-if="errors.nid_number">{{ email.nid_number[0] }}</small>
+                                        <small class="text-danger" v-if="errors.nid_number">{{ errors.nid_number[0] }}</small>
                                         <label for="inputNidNumber">NID Number</label>
                                     </div>
                                 </div>
@@ -63,14 +63,14 @@
                                                 {{ option.label }}
                                             </option>
                                         </select>
-                                        <small class="text-danger" v-if="errors.gender">{{ email.gender[0] }}</small>
+                                        <small class="text-danger" v-if="errors.gender">{{ errors.gender[0] }}</small>
                                         <label for="inputAddress">Gender</label>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
                                         <input class="form-control" id="inputSalary" v-model="form.salary" type="text" placeholder="Salary" />
-                                        <small class="text-danger" v-if="errors.salary">{{ email.salary[0] }}</small>
+                                        <small class="text-danger" v-if="errors.salary">{{ errors.salary[0] }}</small>
                                         <label for="inputSalary">Salary</label>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
                                         <input class="form-control" id="inputJoiningDate" v-model="form.Joining_date" type="Date" placeholder="Create a address" />
-                                        <small class="text-danger" v-if="errors.Joining_date">{{ email.Joining_date[0] }}</small>
+                                        <small class="text-danger" v-if="errors.Joining_date">{{ errors.Joining_date[0] }}</small>
                                         <label for="inputJoiningDate">Joining Date</label>
                                     </div>
                                 </div>
