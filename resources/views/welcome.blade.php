@@ -80,6 +80,21 @@
                                         All Supplier</router-link>
                                 </nav>
                             </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCategory" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-layer-group"></i></div>
+                                Category 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseCategory" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <router-link class="nav-link" :to="{name: 'add-categoty'}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                                        Add Category</router-link>
+                                    <router-link class="nav-link" :to="{name:'all-categoty'}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                                        All Category</router-link>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 supplier 

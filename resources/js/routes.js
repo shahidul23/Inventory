@@ -13,6 +13,10 @@ import EditEmployee from './components/employee/edit.vue';
 import Supplier from './components/supplier/create.vue';
 import AllSupplier from './components/supplier/index.vue';
 import EditSuplier from './components/supplier/edit.vue';
+//caregoty
+import Category from './components/category/create.vue';
+import AllCategory from './components/category/index.vue';
+import EditCategory from './components/category/edit.vue';
 
 export const routes = [
   { path: '/', component: Home, name: '/' },
@@ -28,5 +32,9 @@ export const routes = [
   { path: '/add-supplier', component: Supplier, name:'add-supplier' },
   { path: '/all-supplier', component: AllSupplier, name:'all-supplier' },
   { path: '/edit-supplier/:id', component: EditSuplier, name:'edit-supplier' },
+  //category
+  { path: '/add-categoty', component: Category, name:'add-categoty' },
+  { path: '/all-categoty', component: AllCategory, name:'all-categoty' },
+  { path: '/edit-categoty/:id', component: EditCategory, name:'edit-categoty' },
   
 ];
