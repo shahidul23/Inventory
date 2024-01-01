@@ -124,7 +124,7 @@ class SupplierController extends Controller
             }
         }else{
             $oldPhoto = $request->photo;
-            $data['photo'] = $oldPhoto
+            $data['photo'] = $oldPhoto;
             DB::table('suppliers')->where('id',$id)->update($data);
         }
     }

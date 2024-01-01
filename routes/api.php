@@ -7,6 +7,7 @@ use App\Http\Controllers\Api\EmployeeController;
 use App\Http\Controllers\Api\SupplierController;
 use App\Http\Controllers\Api\CategorieController;
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\ExpenseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,4 +37,5 @@ Route::apiResource('/employee', EmployeeController::class);
 Route::apiResource('/supplier', SupplierController::class);
 Route::apiResource('/category', CategorieController::class);
 Route::apiResource('/product', ProductController::class);
+Route::apiResource('/expense', ExpenseController::class);
 
