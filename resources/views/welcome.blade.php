@@ -95,6 +95,21 @@
                                         All Category</router-link>
                                 </nav>
                             </div>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseProduct" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-brands fa-product-hunt"></i></div>
+                                Products 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseProduct" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <router-link class="nav-link" :to="{name: 'add-product'}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                                        Add Product</router-link>
+                                    <router-link class="nav-link" :to="{name:'all-product'}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                                        All Product</router-link>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 supplier 

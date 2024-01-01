@@ -17,6 +17,10 @@ import EditSuplier from './components/supplier/edit.vue';
 import Category from './components/category/create.vue';
 import AllCategory from './components/category/index.vue';
 import EditCategory from './components/category/edit.vue';
+//product
+import Product from './components/product/create.vue';
+import AllProduct from './components/product/index.vue';
+import EditProduct from './components/product/edit.vue';
 
 export const routes = [
   { path: '/', component: Home, name: '/' },
@@ -36,5 +40,9 @@ export const routes = [
   { path: '/add-categoty', component: Category, name:'add-categoty' },
   { path: '/all-categoty', component: AllCategory, name:'all-categoty' },
   { path: '/edit-categoty/:id', component: EditCategory, name:'edit-categoty' },
+  //product
+  {path: '/add-product', component: Product, name:'add-product' },
+  {path: '/all-product', component: AllProduct, name:'all-product' },
+  {path: '/edit-product/:id', component: EditProduct, name:'edit-product' },
   
 ];

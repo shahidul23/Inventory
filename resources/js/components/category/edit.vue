@@ -9,7 +9,7 @@
                 </ol>
                 <div class="card mb-4">
                     <div class="card-header">
-                        <i class="fas fa-user-friends me-1"></i>
+                        <i class="fas fa-industry"></i>
                         Category list
                         <router-link class="btn btn-sm btn-info" style="float: right;" id="add_new" to="/all-categoty">All Categories</router-link>
                     </div>
