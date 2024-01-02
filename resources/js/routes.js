@@ -25,6 +25,11 @@ import EditProduct from './components/product/edit.vue';
 import Expense from './components/expense/create.vue';
 import AllExpense from './components/expense/index.vue';
 import EditExpense from './components/expense/edit.vue';
+//salary
+import GivenSalary from './components/salary/all_employee.vue';
+import Salary from './components/salary/create.vue';
+import AllSalary from './components/salary/index.vue';
+import EditSalary from './components/salary/edit.vue';
 
 export const routes = [
   { path: '/', component: Home, name: '/' },
@@ -52,5 +57,10 @@ export const routes = [
   {path: '/add-expense', component: Expense, name:'add-expense' },
   {path: '/all-expense', component: AllExpense, name:'all-expense' },
   {path: '/edit-expense/:id', component: EditExpense, name:'edit-expense' },
+  //salary
+  {path: '/given-salary', component: GivenSalary, name:'given-salary' },
+  {path: '/pay-salary/:id', component: Salary, name:'pay-salary' },
+  {path: '/all-salary', component: AllSalary, name:'all-salary' },
+  {path: '/edit-salary/:id', component: EditSalary, name:'edit-salary' },
   
 ];
