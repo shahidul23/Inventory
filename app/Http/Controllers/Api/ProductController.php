@@ -98,7 +98,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, string $id)
     {
-         $validated = $request->validate([
+        $validated = $request->validate([
         'category_id' => 'required',
         'product_name' => 'required',
         'product_code' => 'required',
@@ -155,5 +155,15 @@ class ProductController extends Controller
         }else{
             DB::table('products')->where('id',$id)->delete();
         }
+    }
+    public function stockUpdate(Request $request, $id)
+    {
+        $validated = $request->validate([
+        'product_quantity' => 'required',
+        ]);
+        $data = array();
+        $data['product_quantity'] = $request->product_quantity;
+        DB::table('products')->where('id',$id)->update($data);
+
     }
 }

@@ -29,6 +29,7 @@
                                     <th>Phone</th>
                                     <th>Salary</th>
                                     <th>Month Name</th>
+                                    <th>Date</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -39,6 +40,7 @@
                                     <td>{{ salary.phone }}</td>
                                     <td>{{ salary.salary }}</td>
                                     <td>{{ salary.salary_month }}</td>
+                                    <td>{{ salary.salary_date }}</td>
                                     <td>
                                         <router-link :to="{ name: 'edit-salary', params:{id: salary.id} }" class="btn btn-sm btn-info"><i class="fa-solid fa-pen-to-square"></i></router-link>
                                     </td>

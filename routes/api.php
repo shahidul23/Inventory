@@ -41,4 +41,5 @@ Route::apiResource('/product', ProductController::class);
 Route::apiResource('/expense', ExpenseController::class);
 Route::apiResource('/salary', SalaryController::class);
 Route::post('/salary/{id}', [SalaryController::class, 'paid']);
+Route::post('/stock/edit/{id}', [ProductController::class, 'stockUpdate']);
 

@@ -21,6 +21,8 @@ import EditCategory from './components/category/edit.vue';
 import Product from './components/product/create.vue';
 import AllProduct from './components/product/index.vue';
 import EditProduct from './components/product/edit.vue';
+import Stock from './components/stock/stock.vue';
+import EditStock from './components/stock/edit.vue';
 //expense
 import Expense from './components/expense/create.vue';
 import AllExpense from './components/expense/index.vue';
@@ -50,17 +52,19 @@ export const routes = [
   { path: '/all-categoty', component: AllCategory, name:'all-categoty' },
   { path: '/edit-categoty/:id', component: EditCategory, name:'edit-categoty' },
   //product
-  {path: '/add-product', component: Product, name:'add-product' },
-  {path: '/all-product', component: AllProduct, name:'all-product' },
-  {path: '/edit-product/:id', component: EditProduct, name:'edit-product' },
+  { path: '/add-product', component: Product, name:'add-product' },
+  { path: '/all-product', component: AllProduct, name:'all-product' },
+  { path: '/edit-product/:id', component: EditProduct, name:'edit-product' },
+  { path: '/stock', component: Stock, name:'stock'},
+  { path: '/edit-stock/:id', component: EditStock, name:'edit-stock'},
   //expense
-  {path: '/add-expense', component: Expense, name:'add-expense' },
-  {path: '/all-expense', component: AllExpense, name:'all-expense' },
-  {path: '/edit-expense/:id', component: EditExpense, name:'edit-expense' },
+  { path: '/add-expense', component: Expense, name:'add-expense' },
+  { path: '/all-expense', component: AllExpense, name:'all-expense' },
+  { path: '/edit-expense/:id', component: EditExpense, name:'edit-expense' },
   //salary
-  {path: '/given-salary', component: GivenSalary, name:'given-salary' },
-  {path: '/pay-salary/:id', component: Salary, name:'pay-salary' },
-  {path: '/all-salary', component: AllSalary, name:'all-salary' },
-  {path: '/edit-salary/:id', component: EditSalary, name:'edit-salary' },
+  { path: '/given-salary', component: GivenSalary, name:'given-salary' },
+  { path: '/pay-salary/:id', component: Salary, name:'pay-salary' },
+  { path: '/all-salary', component: AllSalary, name:'all-salary' },
+  { path: '/edit-salary/:id', component: EditSalary, name:'edit-salary' },
   
 ];
