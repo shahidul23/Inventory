@@ -32,6 +32,10 @@ import GivenSalary from './components/salary/all_employee.vue';
 import Salary from './components/salary/create.vue';
 import AllSalary from './components/salary/index.vue';
 import EditSalary from './components/salary/edit.vue';
+//custome
+import Customer from './components/customer/create.vue';
+import AllCustomer from './components/customer/index.vue';
+import EditCustomer from './components/customer/edit.vue';
 
 export const routes = [
   { path: '/', component: Home, name: '/' },
@@ -66,5 +70,9 @@ export const routes = [
   { path: '/pay-salary/:id', component: Salary, name:'pay-salary' },
   { path: '/all-salary', component: AllSalary, name:'all-salary' },
   { path: '/edit-salary/:id', component: EditSalary, name:'edit-salary' },
+  //customer
+  { path: '/customer', component: Customer, name:'customer' },
+  { path: '/all-customer', component: AllCustomer, name:'all-customer' },
+  { path: '/edit-customer/:id', component: EditCustomer, name:'edit-customer' },
   
 ];
