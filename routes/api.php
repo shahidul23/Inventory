@@ -10,6 +10,8 @@ use App\Http\Controllers\Api\ProductController;
 use App\Http\Controllers\Api\ExpenseController;
 use App\Http\Controllers\Api\SalaryController;
 use App\Http\Controllers\Api\CustomerController;
+use App\Http\Controllers\Api\POSController;
+use App\Http\Controllers\Api\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,4 +46,9 @@ Route::apiResource('/salary', SalaryController::class);
 Route::post('/salary/{id}', [SalaryController::class, 'paid']);
 Route::post('/stock/edit/{id}', [ProductController::class, 'stockUpdate']);
 Route::apiResource('/customer', CustomerController::class);
+//pos
+Route::get('/category/item/{id}', [POSController::class, 'getProduct']);
+//cart
+Route::post('/add-cart/{id}', [CartController::class, 'cartInsert']);
+Route::get('/all-cart-product', [CartController::class, 'allCartProduce']);
 

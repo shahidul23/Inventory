@@ -36,6 +36,8 @@ import EditSalary from './components/salary/edit.vue';
 import Customer from './components/customer/create.vue';
 import AllCustomer from './components/customer/index.vue';
 import EditCustomer from './components/customer/edit.vue';
+//point of sale
+import Ops from './components/pos/pointofsale.vue';
 
 export const routes = [
   { path: '/', component: Home, name: '/' },
@@ -59,7 +61,7 @@ export const routes = [
   { path: '/add-product', component: Product, name:'add-product' },
   { path: '/all-product', component: AllProduct, name:'all-product' },
   { path: '/edit-product/:id', component: EditProduct, name:'edit-product' },
-  { path: '/stock', component: Stock, name:'stock'},
+  { path: '/stock/', component: Stock, name:'stock'},
   { path: '/edit-stock/:id', component: EditStock, name:'edit-stock'},
   //expense
   { path: '/add-expense', component: Expense, name:'add-expense' },
@@ -74,5 +76,7 @@ export const routes = [
   { path: '/customer', component: Customer, name:'customer' },
   { path: '/all-customer', component: AllCustomer, name:'all-customer' },
   { path: '/edit-customer/:id', component: EditCustomer, name:'edit-customer' },
+  // point of sale
+  { path: '/pos', component: Ops, name:'pos' },
   
 ];

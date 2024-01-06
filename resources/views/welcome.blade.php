@@ -50,6 +50,25 @@
                                 Dashboard
                             </router-link>
                             <div class="sb-sidenav-menu-heading">Interface</div>
+                            <router-link class="nav-link" :to="{name:'pos'}">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-cart-shopping"></i></div>
+                                POS
+                            </router-link>
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCoustomer" aria-expanded="false" aria-controls="collapseLayouts">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
+                                Customer 
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseCoustomer" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <router-link class="nav-link" :to="{name: 'customer'}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
+                                        Add Customer</router-link>
+                                    <router-link class="nav-link" :to="{name:'all-customer'}">
+                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
+                                        All Customer</router-link>
+                                </nav>
+                            </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseEmploy" aria-expanded="false" aria-controls="collapseLayouts">
                                 <div class="sb-nav-link-icon"><i class="fas fa-user-friends"></i></div>
                                 Employee
@@ -152,21 +171,6 @@
                                         Stock</router-link>
                                 </nav>
                             </div>
-                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCoustomer" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
-                                Customer 
-                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
-                            </a>
-                            <div class="collapse" id="collapseCoustomer" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <router-link class="nav-link" :to="{name: 'customer'}">
-                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-plus"></i></div>
-                                        Add Customer</router-link>
-                                    <router-link class="nav-link" :to="{name:'all-customer'}">
-                                    <div class="sb-nav-link-icon"><i class="fa-solid fa-list"></i></div>
-                                        All Customer</router-link>
-                                </nav>
-                            </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
                                 <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
                                 supplier 
@@ -225,6 +229,7 @@
         <script src="{{ asset('backend/assets/demo/chart-bar-demo.js')}}"></script> -->
         <script src="{{ asset('backend/js/datatables-simple-demo.js')}}"></script>
         <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script> -->
         <script type="text/javascript">
             let token = localStorage.getItem('token');
             if(token){
