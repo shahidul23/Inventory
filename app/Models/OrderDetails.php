@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Expense extends Model
+class OrderDetails extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'details',
-        'amount',
-        'expanse_date',
+        'order_id',
+        'pro_id',
+        'pro_qty',
+        'pro_price',
+        'sub_total',
     ];
 }

@@ -30,6 +30,7 @@ const router = createRouter({
 
 const app = createApp({});
 
+window.Reload =app;
 app.use(router); 
 app.mount('#app');
 

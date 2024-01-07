@@ -14,68 +14,75 @@
                             Customer Insert
                             <a  class="btn btn-sm btn-info" style="float: right;" data-bs-toggle="modal" data-bs-target="#exampleModal" id="add_new">Add New</a>
                         </div>
-                        <form>
-                            <div class="card-body">
-                                <table class="table table-sm table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Qty</th>
-                                            <th scope="col">Unit</th>
-                                            <th scope="col">Total</th>
-                                            <th scope="col">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr v-for="cart in carts" :key="cart.id">
-                                            <td>{{cart.pro_name}}</td>
-                                            <td>{{ cart.pro_qty }}</td>
-                                            <td>{{ cart.pro_price }}</td>
-                                            <td>{{ cart.sub_total }}</td>
-                                            <td><a href="#" class="btn btn-sm btn-danger">X</a></td>
-                                        </tr>
-                                    </tbody>
-                                </table><hr>
-                            </div>
-                            <div class="card-footer">
-                                <ul class="list-group">
-                                    <li class="list-group-item d-flex justify-content-between aline-item-center">
-                                        Total Quantity:
-                                        <strong>12</strong>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between aline-item-center">
-                                        Sub Total:
-                                        <strong>120000</strong>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between aline-item-center">
-                                        Vat:
-                                        <strong>5%</strong>
-                                    </li>
-                                    <li class="list-group-item d-flex justify-content-between aline-item-center">
-                                        Total:
-                                        <strong>125000</strong>
-                                    </li>
-                                </ul><br>
+                        
+                        <div class="card-body">
+                            <table class="table table-sm table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Qty</th>
+                                        <th scope="col">Unit</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr v-for="cart in carts" :key="cart.id">
+                                        <td>{{cart.pro_name}}</td>
+                                        <td><input type="text" readonly style="width: 20px;" :value="cart.pro_qty">
+                                            <button @click.prevent="Increment(cart.id)" class="btn btn-sm btn-success">+</button>
+
+                                            <button @click.prevent="Decrement(cart.id)" class="btn btn-sm btn-danger" v-if="cart.pro_qty >=2">-</button>
+                                            <button @click.prevent="Decrement(cart.id)" class="btn btn-sm btn-danger" v-else disabled>-</button>
+                                        </td>    
+                                        <td>{{ cart.pro_price }}</td>
+                                        <td>{{ cart.sub_total }}</td>
+                                        <td><a @click="removeItem(cart.id)" class="btn btn-sm btn-danger">X</a></td>
+                                    </tr>
+                                </tbody>
+                            </table><hr>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="list-group">
+                                <li class="list-group-item d-flex justify-content-between aline-item-center">
+                                    Total Quantity:
+                                    <strong>{{ qty() }}</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between aline-item-center">
+                                    Sub Total:
+                                    <strong>{{ subTotal() }} TK</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between aline-item-center">
+                                    Vat:
+                                    <strong>{{ vats.vat }}%</strong>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between aline-item-center">
+                                    Total:
+                                    <strong>{{ this.total() }} TK</strong>
+                                </li>
+                            </ul><br>
+                            <form @submit.prevent="orderDone">
                                 <label>Customer Name</label>
-                                <select class="form-control">
+                                <select class="form-control" v-model="customer_id">
                                     <option disabled selected>Select Customer</option>
-                                    <option v-for="customer in customers" :key="customer.id" :value="customer.name">
+                                    <option v-for="customer in customers" :key="customer.id" :value="customer.id">
                                         {{ customer.name }}
                                     </option>
                                 </select>
                                 <label>Pay</label>
-                                <input type="" class="form-control">
+                                <input type="text" required class="form-control" v-model="pay">
                                 <label>Due</label>
-                                <input type="" class="form-control">
+                                <label class="form-control" style="height: 40px;">{{ this.dues() }}</label>
+                                <!-- <input type="text" readonly class="form-control" v-model="due"> -->
                                 <label>Pay By</label>
-                                <select class="form-control">
-                                    <option>Hand Cash</option>
-                                    <option>Cheaque</option>
-                                    <option>Gift Card</option>
+                                <select class="form-control" v-model="payby">
+                                    <option value="Hand Cash">Hand Cash</option>
+                                    <option value="Cheaque">Cheaque</option>
+                                    <option value="Gift Card">Gift Card</option>
                                 </select><br>
                                 <button type="submit" class="btn btn-success">Submit</button>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
 
@@ -170,7 +177,7 @@
                                                         <div class="card-body">
                                                             <small class="card-title">{{ product.product_name }}</small>
                                                             <br>
-                                                            <span v-if="product.product_quantity >=1" class="btn btn-sm btn-success">Availble</span>
+                                                            <span v-if="product.product_quantity >=1" class="btn btn-sm btn-success">Availble({{ product.product_quantity }})</span>
                                                             <span v-else class="btn btn-sm btn-danger">Stock Out</span>
                                                         </div>
                                                     </div>
@@ -185,7 +192,7 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-lg-3 col-md-3 col-sm-6 col-6" v-for="(product,index) in filerGetitem" :key="index">
-                                            <a href="#">
+                                            <button class="btn btn-sm" @click.prevent="AddToCart(product.id)">
                                                 <div class="row">
                                                     <div class="card" style="width: 10rem;">
                                                         <img :src="product.image" class="card-img-top">
@@ -197,7 +204,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </a>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -220,6 +227,10 @@
                 this.allProduct();
                 this.allCustomer();
                 this.allCartProduct();
+                this.vat();
+                // Reload.$on('afterAdd', ()=>{
+                //     this.allCartProduct();
+                // })
             }
         },
         data() {
@@ -244,7 +255,11 @@
                 errors:{},
                 GetsearchTerm:'',
                 customers:'',
-                carts:[]
+                carts:[],
+                vats:'',
+                customer_id:'',
+                pay:'',
+                payby:''
                 
             };
         },
@@ -282,14 +297,44 @@
             }
         },
         methods: {
+            vat(){
+                axios.get('/api/extra/')
+                .then(({data}) =>{
+                    this.vats = data;
+                })
+                .catch(console.log('error'))
+            },
+            Increment(id){
+                axios.get('/api/increment/'+id)
+                .then(() =>{
+                    this.allCartProduct();
+                    Toast.fire({
+                    icon: "success",
+                    title: "Product Increment successfull"
+                    });
+                })
+                .catch(console.log('error'))
+            },
+            Decrement(id){
+                axios.get('/api/decrement/'+id)
+                .then(() =>{
+                    this.allCartProduct();
+                    Toast.fire({
+                    icon: "error",
+                    title: "Product Decrement successfull"
+                    });
+                })
+                .catch(console.log('error'))
+            },
             AddToCart(id){
                 axios.post('/api/add-cart/'+id)
                 .then(()=>{
+                    //Reload.$emit('afterAdd');
+                    this.allCartProduct();
                     Toast.fire({
                     icon: "success",
                     title: "Product Added successfull"
-                });
-                
+                    });
                 })
                 .catch(console.log("product not added to cart"))
             },
@@ -324,22 +369,72 @@
                 });
             },
             customerInsert() {
-            axios.post('/api/customer', this.form)
-            .then(() => {
-                $('#closeModal').click();
-                Toast.fire({
-                    icon: "success",
-                    title: "Customer inserted successfully"
+                axios.post('/api/customer', this.form)
+                .then(() => {
+                    $('#closeModal').click();
+                    Toast.fire({
+                        icon: "success",
+                        title: "Customer inserted successfully"
+                    });
+                    this.customers = this.customers.filter(customer =>{
+                        return customer.id != id 
+                    });
+                })
+                .catch(error => {
+                    console.log(error);
+                    //this.errors = error.response.data.errors;
                 });
-                this.customers = this.customers.filter(customer =>{
-                    return customer.id != id 
-                });
-            })
-            .catch(error => {
-                console.log(error);
-                //this.errors = error.response.data.errors;
-            });
-        },
+            },
+            removeItem(id){
+                axios.get('/api/remove/'+id)
+                .then(()=>{
+                    this.carts = this.carts.filter(cart =>{
+                            return cart.id != id
+                        })
+                    Toast.fire({
+                    icon: "error",
+                    title: "Product Delete successfull"
+                    });
+                })
+                .catch(console.log('error'))
+            },
+            qty(){
+                let sum = 0;
+                for(let i=0 ;i<this.carts.length;i++){
+                    sum += (parseFloat(this.carts[i].pro_qty))
+                }
+                return sum;
+            },
+            subTotal(){
+                let sum = 0;
+                for(let i = 0; i<this.carts.length;i++){
+                    sum += (parseFloat(this.carts[i].sub_total))
+                }
+                return sum;
+            },
+            total(){
+                let total = (this.subTotal() * this.vats.vat /100) + this.subTotal();
+                return total;
+            },
+            dues(){
+                let due = this.total() - this.pay;
+                return due
+            },
+            orderDone(){
+                let data = {qty: this.qty(), subTotal:this.subTotal(), customer_id:this.customer_id, payby:this.payby,
+                pay:this.pay,due:this.dues(), vat:this.vats.vat, total:this.total()}
+
+                axios.post('/api/orderdone/',data)
+                .then(() =>{
+                    Toast.fire({
+                        icon: "success",
+                        title: "Order Done successfully"
+                    });
+                    this.$router.push({name:'/'});
+                })
+                .catch(console.log('error'))
+            }
+
         }
     };
     </script>

@@ -38,6 +38,10 @@ import AllCustomer from './components/customer/index.vue';
 import EditCustomer from './components/customer/edit.vue';
 //point of sale
 import Ops from './components/pos/pointofsale.vue';
+//order
+import Order from './components/order/order.vue';
+import Search from './components/order/search.vue';
+import ViewOrder from './components/order/vieworder.vue';
 
 export const routes = [
   { path: '/', component: Home, name: '/' },
@@ -78,5 +82,9 @@ export const routes = [
   { path: '/edit-customer/:id', component: EditCustomer, name:'edit-customer' },
   // point of sale
   { path: '/pos', component: Ops, name:'pos' },
+  //order
+  { path: '/order', component: Order, name:'orser' },
+  { path: '/view-order/:id', component: ViewOrder, name:'view-order' },
+  { path: '/search', component: Search, name:'search' },
   
 ];
