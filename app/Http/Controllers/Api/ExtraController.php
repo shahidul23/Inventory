@@ -44,7 +44,7 @@ class ExtraController extends Controller
             $ext = explode('/', $sub)[1];
             $name = time().".".$ext;
             $image = Image::make($request->logo)->resize(240, 200);
-            $upload_path = 'backend/photo/setting';
+            $upload_path = 'backend/photo/setting/';
             $image_url = $upload_path.$name;
             $image->save($image_url);
 
