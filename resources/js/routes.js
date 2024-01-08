@@ -42,6 +42,8 @@ import Ops from './components/pos/pointofsale.vue';
 import Order from './components/order/order.vue';
 import Search from './components/order/search.vue';
 import ViewOrder from './components/order/vieworder.vue';
+//srtting 
+import Setting from './components/setting/create.vue';
 
 export const routes = [
   { path: '/', component: Home, name: '/' },
@@ -86,5 +88,7 @@ export const routes = [
   { path: '/order', component: Order, name:'orser' },
   { path: '/view-order/:id', component: ViewOrder, name:'view-order' },
   { path: '/search', component: Search, name:'search' },
+  //setting 
+  { path: '/Setting', component: Setting, name:'Setting' },
   
 ];

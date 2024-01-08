@@ -62,8 +62,8 @@ Route::get('/decrement/{id}', [CartController::class, 'decrementCart']);
 Route::get('/orders', [OrderController::class, 'TodayOeders']);
 Route::get('/order/details/{id}', [OrderController::class, 'OrderDetails']);
 Route::get('/order/detailsall/{id}', [OrderController::class, 'OrderDetailsAll']);
-Route::post('/search/date', [OrderController::class, 'searchOrderDate']);
-Route::post('/search/month', [OrderController::class, 'searchOrderMonth']);
+Route::get('/search/date/{date}', [OrderController::class, 'searchOrderDate']);
+Route::get('/search/month/{month}', [OrderController::class, 'searchOrderMonth']);
 //home component
 Route::get('/today/sell', [POSController::class, 'todaySell']);
 Route::get('/today/income', [POSController::class, 'todayIncome']);

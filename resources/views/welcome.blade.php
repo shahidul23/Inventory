@@ -31,7 +31,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#!">Settings</a></li>
+                        <li><router-link class="dropdown-item" :to="{name:'Setting'}">Settings</router-link></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
                         <li><router-link class="dropdown-item" to="/logout">Logout</router-link></li>
@@ -187,7 +187,7 @@
                                 </nav>
                             </div>
                             <div class="sb-sidenav-menu-heading">Configaration</div>
-                            <router-link class="nav-link" to="/">
+                            <router-link class="nav-link" :to="{name:'Setting'}">
                                 <div class="sb-nav-link-icon"><i class="fa-solid fa-gear"></i></div>
                                 Settings
                             </router-link>
