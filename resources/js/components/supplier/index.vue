@@ -123,7 +123,7 @@
                 searchTerm:'',
                 //pagination
                 itemPerpage:5,
-                currentPage:1,
+                currentPage:1, 
             };
         },
         computed:{
@@ -138,8 +138,8 @@
                     return nameMatch || emailMatch || phoneMatch || addressdateMatch;
                 });
             },
-             //pagination
-             VisiblePost(){
+            //pagination
+            VisiblePost(){
                 const startPage = (this.currentPage - 1) * this.itemPerpage;
                 const endpage = startPage + this.itemPerpage;
                 return this.filterSearch.slice(startPage,endpage)

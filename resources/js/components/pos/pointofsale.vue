@@ -169,7 +169,7 @@
                                 <input type="text" v-model="searchTerm" class="form-control" placeholder="product search...">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-lg-3 col-md-3 col-sm-6 col-6" v-for="(product,index) in filterSearch" :key="index">
+                                        <div class="col-lg-3 col-md-3 col-sm-6 col-6" v-for="(product,index) in VisiblePost" :key="index">
                                             <button class="btn btn-sm" @click.prevent="AddToCart(product.id)">
                                                 <div class="row">
                                                     <div class="card" style="width: 10rem;">
@@ -184,6 +184,41 @@
                                                 </div>
                                             </button>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-md-12">
+                                        <nav aria-label="Page navigation" style="float: right;">
+                                            <ul class="pagination justify-center-center mt-4">
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    @click="changePage(currentPage - 1)"
+                                                    :disabled="currentPage === 1"
+                                                    >
+                                                    Previous
+                                                </a>
+                                                </li>
+                                                <li class="page-item"
+                                                v-for="pageNumber in VisiblePageNumber"
+                                                :key="pageNumber"
+                                                :class="{ active:currentPage == pageNumber || 
+                                                pageNumber === '....'}">
+                                                <a class="page-link"
+                                                    @click="changePage(pageNumber)">
+                                                    {{pageNumber}}
+                                                </a>
+
+                                                </li>
+                                                <li class="page-item">
+                                                    <a class="page-link"
+                                                    @click="changePage(currentPage + 1)"
+                                                    :disabled="currentPage === 1"
+                                                    >
+                                                    Previous
+                                                </a>
+                                                </li>
+                                            </ul>
+                                        </nav>
                                     </div>
                                 </div>
                             </div>
@@ -259,7 +294,10 @@
                 vats:'',
                 customer_id:'',
                 pay:'',
-                payby:''
+                payby:'',
+                //pagination
+                itemPerpage:12,
+                currentPage:1, 
                 
             };
         },
@@ -290,10 +328,38 @@
                     const nameMatch = productItem.product_name.toLowerCase().includes(productSearchTermLowerCase);
                     const codeMatch = productItem.product_code.toLowerCase().includes(productSearchTermLowerCase);
                     const priceMatch = productItem.selling_price.toLowerCase().includes(productSearchTermLowerCase);
+                    //const categoryMatch = productItem.category_name.toLowerCase().includes(productSearchTermLowerCase);
                     
-
-                    return nameMatch || codeMatch || priceMatch;
+                    return nameMatch || codeMatch || priceMatch || categoryMatch;
                 });
+            },
+             //pagination
+             VisiblePost(){
+                const startPage = (this.currentPage - 1) * this.itemPerpage;
+                const endpage = startPage + this.itemPerpage;
+                return this.filterSearch.slice(startPage,endpage)
+            },
+            totalPages(){
+                return Math.ceil(this.filterSearch.length / this.itemPerpage)
+            },
+            VisiblePageNumber(){
+                let pageNumbers = []
+                if(this.totalPages <= 7){
+                    for(let i = 1; i<=this.totalPages; i++){
+                        pageNumbers.push(i)
+                    }
+                }else{
+                    if(this.currentPage <= 4){
+                        pageNumbers = [1,2,3,4,5,"......",this.totalPages];
+                    }else if(this.currentPage >= this.totalPages - 3){
+                        pageNumbers = [1,"......",this.totalPages - 4,this.totalPages - 3,
+                        this.totalPages - 2,this.totalPages - 1,this.totalPages]
+                    }else{
+                        pageNumbers = [1,"......",this.currentPage - 1, this.currentPage,
+                        this.currentPage + 1,"......",this.totalPages]
+                    }
+                }
+                return pageNumbers;
             }
         },
         methods: {
@@ -433,6 +499,15 @@
                     this.$router.push({name:'/'});
                 })
                 .catch(console.log('error'))
+            },
+            //pagination
+            changePage(page){
+                if(page >= 1 && page <= this.totalPages){
+                    this.currentPage = page
+                }
+            },
+            changeCurrentPage(){
+                this. currentPage = 1 
             }
 
         }

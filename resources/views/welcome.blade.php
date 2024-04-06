@@ -16,7 +16,7 @@
         <div id="app">
             <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark" id="topbar" style="display: none;" v-show="$route.path === '/login' || $route.path === '/register' || $route.path === '/forget' ? false : true" >
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
+            <a class="navbar-brand ps-3" href="index.html">LONE STAR SHOP</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->

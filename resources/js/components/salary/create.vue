@@ -41,7 +41,7 @@
                             <div class="row mb-3">
                                 <div class="col-md-6">
                                     <div class="form-floating mb-3 mb-md-0">
-                                        <select class="form-control" v-model="form.month">
+                                        <select class="form-control" v-model="form.salary_month">
                                             <option disabled selected>Select Month</option>
                                             <option v-for="option in options" :key="option.value" :value="option.value">
                                                 {{ option.label }}
@@ -101,7 +101,7 @@
               form:{
                   name:'',
                   email:'',
-                  month:'',
+                  salary_month:'',
                   salary:'',
               },
               errors:{}
