@@ -8,10 +8,10 @@
                     <li class="breadcrumb-item">Create Customer</li>
                 </ol>
                 <div class="card mb-4">
-                    <div class="card-header">
+                    <div class="card-header"> 
                         <i class="fas fa-user-friends me-1"></i>
                         Customer list
-                        <router-link class="btn btn-sm btn-info" style="float: right;" id="add_new" to="/all-employee">All Employee</router-link>
+                        <router-link class="btn btn-sm btn-info" style="float: right;" id="add_new" to="/all-customer">All Customers</router-link>
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="customerInsert"> 

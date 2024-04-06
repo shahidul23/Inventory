@@ -11,7 +11,7 @@
                     <div class="card-header">
                         <i class="fas fa-industry"></i>
                         Expanses list
-                        <router-link class="btn btn-sm btn-info" style="float: right;" id="add_new" :to="{name:'all-expense'}">All Categories</router-link>
+                        <router-link class="btn btn-sm btn-info" style="float: right;" id="add_new" :to="{name:'all-expense'}">All Expanse</router-link>
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="expenseInsert"> 
